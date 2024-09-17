@@ -34,9 +34,9 @@ This is a Java implementation of the Enigma Machine, a cipher device used during
    chmod +x enigma.sh
    ```
 
-2. **Run the script with the Java source file**:
+2. **Run the script**:
    ```bash
-   ./enigma.sh EnigmaMachine.java
+   ./enigma.sh
    ```
 
 ### Example Output
@@ -44,7 +44,7 @@ This is a Java implementation of the Enigma Machine, a cipher device used during
 After running the script, the program will prompt you for the necessary inputs:
 
 ```bash
-xoh3b@xoh3b:/mnt/c/Enigma_Machine$ ./enigma.sh EnigmaMachine.java
+xoh3b@xoh3b:/mnt/c/Enigma_Machine$ ./enigma.sh
 Compiling EnigmaMachine.java...
 Compilation successful!
 Running the program...
@@ -65,6 +65,7 @@ Encrypted message: JKJRFLHF
 5. **Message to Encrypt**: Enter the plain text message to be encrypted.
 
 ### Encrypted Output
+
 The program will return the encrypted message after processing it through the Enigma machine simulation.
 
 ---
@@ -72,7 +73,7 @@ The program will return the encrypted message after processing it through the En
 ## Structure
 
 - **EnigmaMachine.java**: The main Java source code that implements the Enigma Machine.
-- **enigma.sh**: A shell script used to compile and run the Java program.
+- **enigma.sh**: A shell script used to compile and run the Java program. The script will automatically locate the Java file and run it.
 
 ---
 
@@ -80,5 +81,5 @@ The program will return the encrypted message after processing it through the En
 
 This project is open-source and available for anyone to use and modify. Feel free to contribute and improve the functionality.
 
----
+--- 
 
