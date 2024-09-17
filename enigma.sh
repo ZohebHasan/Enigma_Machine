@@ -1,7 +1,12 @@
 #!/bin/bash
 
+# Script to compile and run the Enigma machine Java program
 
+# Hardcoded source file name
+SOURCE_FILE="EnigmaMachine.java"
+CLASS_NAME="EnigmaMachine"
 
+# Check if Java is installed
 if ! [ -x "$(command -v java)" ]; then
   echo 'Error: Java is not installed.' >&2
   echo 'Installing Java...'
@@ -10,27 +15,18 @@ if ! [ -x "$(command -v java)" ]; then
   sudo apt-get update
   sudo apt-get install default-jdk -y
 
-  
+  # Installation success check
   if ! [ -x "$(command -v java)" ]; then
     echo 'Error: Java installation failed.' >&2
     exit 1
   fi
 fi
 
-# Check if the user provided the source file
-if [ -z "$1" ]; then
-  echo "Usage: ./enigma.sh <SourceFile.java>"
-  exit 1
-fi
-
-SOURCE_FILE=$1
-CLASS_NAME=${SOURCE_FILE%.java}
-
-# Compile the Java source file
+# Compilation of the source file
 echo "Compiling $SOURCE_FILE..."
 javac $SOURCE_FILE
 
-# Check if compilation was successful
+# Compilation success check
 if [ $? -eq 0 ]; then
   echo "Compilation successful!"
 else
@@ -38,6 +34,6 @@ else
   exit 1
 fi
 
-# Run the compiled Java program
+# Run the compiled Java class
 echo "Running the program..."
 java $CLASS_NAME

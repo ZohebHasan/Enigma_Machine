@@ -418,33 +418,56 @@ public class EnigmaMachine {
     }
 
     public static void main(String[] args) {
-
         Scanner stdin = new Scanner(System.in);
 
-        // Prompt for reflector code
-        System.out.print("Enter the reflector code (A/B/C): ");
-        String reflectorCode = stdin.nextLine().toUpperCase();
+        // Reflector code input validation
+        String reflectorCode;
+        while (true) {
+            System.out.print("Enter the reflector code (A/B/C): ");
+            reflectorCode = stdin.nextLine().toUpperCase();
+            if (reflectorCode.length() == 1 && (reflectorCode.equals("A") || reflectorCode.equals("B") || reflectorCode.equals("C"))) {
+                break;  // valid input
+            } else {
+                System.out.println("Error: Please enter a valid reflector code (A, B, or C).");
+            }
+        }
 
-        // Take rotor list input
-        System.out.print("Enter the rotor list (e.g., 123): ");
-        String rotorList = stdin.nextLine().toUpperCase();
+        // Rotor list input validation
+        String rotorList;
+        while (true) {
+            System.out.print("Enter the rotor list (e.g., 123): ");
+            rotorList = stdin.nextLine().toUpperCase();
+            if (rotorList.length() == 3 && rotorList.matches("[1-5]+")) {
+                break;  // valid input
+            } else {
+                System.out.println("Error: Rotor list must be exactly 3 digits, using only numbers 1-5 (e.g., 123).");
+            }
+        }
 
-        // Take rotor starting positions input
-        System.out.print("Enter the rotor starting positions (e.g., AAA): ");
-        String rotorStartingPoint = stdin.nextLine().toUpperCase();
+        // Rotor starting positions input validationF
+        String rotorStartingPoint;
+        while (true) {
+            System.out.print("Enter the rotor starting positions (e.g., AAA): ");
+            rotorStartingPoint = stdin.nextLine().toUpperCase();
+            if (rotorStartingPoint.length() == 3 && rotorStartingPoint.matches("[A-Z]+")) {
+                break;  // valid input
+            } else {
+                System.out.println("Error: Rotor starting positions must be exactly 3 uppercase letters (e.g., AAA).");
+            }
+        }
 
-        // Take plugboard setup input
+        // Plugboard setup input validation (optional, assumes correct format like AB,CD,EF)
         System.out.print("Enter the plugboard setup (e.g., AB,CD,EF): ");
         String plugBoardSetup = stdin.nextLine().toUpperCase().replace(" ", "");
 
-        // Create Enigma machine with user inputs
+        // Initialize Enigma machine with valid inputs
         EnigmaMachine enigma = new EnigmaMachine(reflectorCode, rotorList, rotorStartingPoint, plugBoardSetup);
 
-        // Take the message to encrypt
+        // Message encryption
         System.out.print("Enter the message to encrypt: ");
         String message = stdin.nextLine().toUpperCase();
 
-        // Process the message
+        // Encrypt and output the message
         String encryptedMessage = enigma.processMessage(message);
         System.out.println("Encrypted message: " + encryptedMessage);
 
