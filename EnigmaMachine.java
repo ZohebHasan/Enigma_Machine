@@ -353,7 +353,7 @@ public class EnigmaMachine {
 
         for (char letter : messageInChars) {
             // Rotate the rotors as necessary
-            if (rotors[2].atNotch() && rotors[1].atNotch()) {
+            if (rotors[1].atNotch()) {
                 rotors[2].rotate();
                 rotors[1].rotate();
                 rotors[0].rotate();
